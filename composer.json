@@ -1,0 +1,37 @@
+{
+  "name": "clab2/golapi",
+  "version": "0.1.0",
+  "description": "Game of Life üzleti logika és REST API",
+  "keywords": ["clab2", "game", "life"],
+  "type": "library",
+  "minimum-stability" : "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Say Gergely <gsay@chromestudio.com>",
+      "homepage": "http://www.chromestudio.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "doctrine/mongodb-odm": "=1.0.8",
+    "doctrine/orm": "*"
+  },
+  "require-dev": {
+    "guzzlehttp/guzzle": "~5.3.0",
+    "phpunit/phpunit": "*",
+    "phpunit/phpunit-selenium": ">=1.2",
+    "symfony/console": "*",
+    "zircote/swagger-php": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Clab2\\Golapi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Clab2\\Golapi\\Tests\\": "tests"
+    }
+  }
+}
