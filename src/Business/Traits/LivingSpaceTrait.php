@@ -17,6 +17,12 @@ trait LivingSpaceTrait
     private static $properties = ['step', 'width', 'height', 'cells'];
 
     /**
+     * @var int A mentett élettér azonosítója
+     * @Id
+     */
+    protected $id;
+
+    /**
      * @var int Az iterációk száma, amin az élettér már átesett
      * @Field(type="int")
      * @Column(type="integer")

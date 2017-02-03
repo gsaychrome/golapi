@@ -11,13 +11,21 @@ use Clab2\Golapi\Business\Api\ILivingSpaceAdapter;
 class LivingSpaceAdapter extends \Clab2\Application\Business\Odm\Doctrine\Adapter implements ILivingSpaceAdapter
 {
     /**
+     * @return LivingSpace
+     */
+    public function create()
+    {
+        return new LivingSpace($this);
+    }
+
+    /**
      * @param int $width
      * @param int $height
      * @return ILivingSpace
      */
     public function createSpace($width=100, $height=100)
     {
-        $space = new LivingSpace($this);
+        $space = $this->create();
         $space->width = $width;
         $space->height = $height;
         $space->step = 0;
