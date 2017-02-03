@@ -3,6 +3,7 @@
 namespace Clab2\Golapi\Business\Traits;
 
 /**
+ * mplementációtól független definiciók és logika
  * @SWG\Definition(definition="Golapi_LivingSpace",title="Golapi_LivingSpace",
  *  allOf={
  *      @SWG\Schema(
@@ -45,5 +46,20 @@ trait LivingSpaceTrait
      * @SWG\Property(example={{0,0,1,0,0},{0,1,1,0,0}})
      */
     protected $cells;
+
+    /**
+     * @param $cells
+     */
+    public function setCells($cells) {
+        $this->cells = $cells;
+        $this->step++;
+        if(!empty($cells)) {
+            $this->height = count($cells);
+            if(!empty($cells[0])) {
+                $this->width = count($cells[0]);
+            }
+        }
+        return $this;
+    }
 
 }

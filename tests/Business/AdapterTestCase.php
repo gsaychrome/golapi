@@ -30,4 +30,17 @@ class AdapterTestCase extends TestCase
         $this->assertNotNull($livingSpace);
         $this->assertInstanceOf('\\Clab2\\Golapi\\Business\\Api\\ILivingSpace',$livingSpace);
     }
+
+    public function testCellInit() {
+        $livingSpace = $this->toolkit->business->golapiLivingSpaceAdapter->createSpace(200,100);
+        // Ha üresen hozzuk létre, akkor az iterációk számát 0-ra állítjuk
+        $this->assertEquals(0,$livingSpace->step);
+        $livingSpace->cells = [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ];
+        // Ha értéket adunk a celláknak, akkor automatikusan az 1-es lépésre kerülünk
+        $this->assertEquals(1,$livingSpace->step);
+    }
 }

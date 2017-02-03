@@ -56,5 +56,49 @@ Class RuleTest extends RuleTestCase
         $this->assertEquals($out,$space->cells);
     }
 
+    /**
+     * Ellenörizzük, hogy az elhalálozások a szabályoknak megfelelőek-e
+     */
+    public function testDeath()
+    {
+        $space = $this->toolkit->business->golapiLivingSpaceAdapter->createSpace(5, 5);
+        // itt nem hal meg senki
+        $in = [
+            [ 0, 0, 0, 0, 0],
+            [ 0, 1, 1, 0, 0],
+            [ 0, 1, 0, 0, 0],
+            [ 0, 0, 0, 0, 0],
+            [ 0, 0, 0, 0, 0],
+        ];
+        $out = [
+            [ 0, 0, 0, 0, 0],
+            [ 0, 1, 1, 0, 0],
+            [ 0, 1, 1, 0, 0],
+            [ 0, 0, 0, 0, 0],
+            [ 0, 0, 0, 0, 0],
+        ];
+        $space->cells = $in;
+        $space = $this->toolkit->business->golapiGameControllerAdapter->next($space);
+        $this->assertEquals($out,$space->cells);
+        $in = [
+            [ 0, 0, 0, 0, 0],
+            [ 0, 1, 1, 1, 0],
+            [ 0, 1, 1, 0, 0],
+            [ 0, 0, 0, 0, 0],
+            [ 0, 0, 0, 0, 0],
+        ];
+        $out = [
+            [ 0, 0, 1, 0, 0],
+            [ 0, 1, 0, 1, 0],
+            [ 0, 1, 0, 1, 0],
+            [ 0, 0, 0, 0, 0],
+            [ 0, 0, 0, 0, 0],
+        ];
+        $space->cells = $in;
+        $space = $this->toolkit->business->golapiGameControllerAdapter->next($space);
+        $this->assertEquals($out,$space->cells);
+
+    }
+
 }
 
