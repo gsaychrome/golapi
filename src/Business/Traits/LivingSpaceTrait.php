@@ -3,7 +3,7 @@
 namespace Clab2\Golapi\Business\Traits;
 
 /**
- * mplementációtól független definiciók és logika
+ * Implementációtól független definiciók és logika
  * @SWG\Definition(definition="Golapi_LivingSpace",title="Golapi_LivingSpace",
  *  allOf={
  *      @SWG\Schema(
@@ -41,7 +41,7 @@ trait LivingSpaceTrait
     protected $height;
 
     /**
-     * @var int[][] Az élettél cellainformációi
+     * @var array Az élettél cellainformációi
      * @Field(type="raw")
      * @SWG\Property(example={{0,0,1,0,0},{0,1,1,0,0}})
      */

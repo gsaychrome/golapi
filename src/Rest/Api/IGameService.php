@@ -14,14 +14,14 @@ interface IGameService
      *     @SWG\Parameter(
      *         description="A játéktér adatai",
      *         in="body",
-     *         name="menu",
-     *         required=true,
-     *         schema=@SWG\Schema(ref="#/definitions/Golapi_LiveSpace")
+     *         name="space",
+     *         required=false,
+     *         schema=@SWG\Schema(ref="#/definitions/Golapi_LivingSpace")
      *     ),
      *     @SWG\Response(
      *          response=200,
      *          description="A játék új adatai",
- *              @SWG\Items(ref="#/definitions/Golapi_LiveSpace")
+ *              @SWG\Items(ref="#/definitions/Golapi_LivingSpace")
      *     ),
      * )
      *
@@ -29,15 +29,15 @@ interface IGameService
     public function nextAction();
 
     /**
-     * @SWG\Post(
+     * @SWG\Get(
      *     path="/golapi/game/init",
      *     tags={"game"},
      *     summary="A játék alapállapota",
-     *     x={"methodName"="next", "group"="Golapi_Game"},
+     *     x={"methodName"="init", "group"="Golapi_Game"},
      *     @SWG\Response(
      *          response=200,
      *          description="A játék adatai",
-     *              @SWG\Items(ref="#/definitions/Golapi_LiveSpace")
+     *              @SWG\Items(ref="#/definitions/Golapi_LivingSpace")
      *     ),
      * )
      *

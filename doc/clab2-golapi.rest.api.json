@@ -1,0 +1,223 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Clab2 Gol API",
+        "description": "Clab2 Gol API",
+        "contact": {
+            "email": "gsay@chrome.hu"
+        },
+        "version": "0.1.0"
+    },
+    "host": "gol.tis.hu",
+    "paths": {
+        "/golapi/game/next": {
+            "post": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "A j\u00e1t\u00e9k egy k\u00f6vetkez\u0151 \u00e1llapot\u00e1nak kisz\u00e1m\u00edt\u00e1sa",
+                "parameters": [
+                    {
+                        "name": "space",
+                        "in": "body",
+                        "description": "A j\u00e1t\u00e9kt\u00e9r adatai",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Golapi_LivingSpace"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A j\u00e1t\u00e9k \u00faj adatai",
+                        "schema": {
+                            "$ref": "#/definitions/Golapi_LivingSpace"
+                        }
+                    }
+                },
+                "x-methodName": "next",
+                "x-group": "Golapi_Game"
+            }
+        },
+        "/golapi/game/init": {
+            "get": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "A j\u00e1t\u00e9k alap\u00e1llapota",
+                "responses": {
+                    "200": {
+                        "description": "A j\u00e1t\u00e9k adatai",
+                        "schema": {
+                            "$ref": "#/definitions/Golapi_LivingSpace"
+                        }
+                    }
+                },
+                "x-methodName": "init",
+                "x-group": "Golapi_Game"
+            }
+        }
+    },
+    "definitions": {
+        "Golapi_LivingSpace": {
+            "title": "Golapi_LivingSpace",
+            "properties": {
+                "step": {
+                    "description": "Az iter\u00e1ci\u00f3k sz\u00e1ma, amin az \u00e9lett\u00e9r m\u00e1r \u00e1tesett",
+                    "type": "integer",
+                    "example": 10
+                },
+                "width": {
+                    "description": "Az \u00e9lett\u00e9r sz\u00e9less\u00e9ge",
+                    "type": "integer",
+                    "example": 200
+                },
+                "height": {
+                    "description": "Az \u00e9lett\u00e9r magass\u00e1ga",
+                    "type": "integer",
+                    "example": 100
+                },
+                "cells": {
+                    "description": "Az \u00e9lett\u00e9l cellainform\u00e1ci\u00f3i",
+                    "type": "array",
+                    "example": [
+                        [
+                            0,
+                            0,
+                            1,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            1,
+                            1,
+                            0,
+                            0
+                        ]
+                    ]
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Application_Data"
+                }
+            ]
+        },
+        "Request_Errors": {
+            "description": "A lek\u00e9rdez\u00e9s sor\u00e1n t\u00f6rt\u00e9nt valid\u00e1ci\u00f3s vagy feldolgoz\u00e1si hib\u00e1k adatai",
+            "properties": {
+                "messages": {
+                    "description": "A hiba param\u00e9terei",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Request_Error"
+                    }
+                }
+            }
+        },
+        "Request_Error": {
+            "title": "Request_Error",
+            "description": "A lek\u00e9rdez\u00e9s sor\u00e1n t\u00f6rt\u00e9nt valid\u00e1ci\u00f3s vagy feldolgoz\u00e1si hiba",
+            "properties": {
+                "code": {
+                    "description": "A hiba k\u00f3dja",
+                    "type": "string",
+                    "example": "DATA-NOT-FOUND"
+                },
+                "message": {
+                    "description": "A hiba sz\u00f6veges \u00fczenete",
+                    "type": "string",
+                    "example": "A keresett 987-es azonos\u00edt\u00f3j\u00fa adat nem l\u00e9tezik"
+                },
+                "params": {
+                    "description": "A hiba param\u00e9terei",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "987"
+                    ]
+                }
+            }
+        },
+        "Application_Data": {
+            "description": "Az alkalmaz\u00e1s adatainak \u00e1ltal\u00e1nos param\u00e9terei",
+            "properties": {
+                "ownerId": {
+                    "description": "Az adatrekord tulajdonos\u00e1nak azonos\u00edt\u00f3ja",
+                    "type": "integer",
+                    "example": 1
+                },
+                "ownerGroupId": {
+                    "description": "Az adatrekord tulajdonos csoportj\u00e1nak azonos\u00edt\u00f3ja",
+                    "type": "integer",
+                    "example": 2
+                },
+                "savedBy": {
+                    "description": "Az adatrekordot utolj\u00e1ra ment\u0151 szem\u00e9ly azonos\u00edt\u00f3ja",
+                    "type": "integer",
+                    "example": 1
+                },
+                "adoptive": {
+                    "description": "Az adatrekord l\u00e1that\u00f3s\u00e1ga",
+                    "type": "integer",
+                    "example": 1
+                },
+                "createdOn": {
+                    "description": "Az adatrekord els\u0151 ment\u00e9si ideje - unix timestamp",
+                    "type": "integer",
+                    "example": 1474840000
+                },
+                "savedOn": {
+                    "description": "Az adatrekord utols\u00f3 ment\u00e9si ideje - unix timestamp",
+                    "type": "integer",
+                    "example": 1474840000
+                },
+                "status": {
+                    "description": "Az adatrekord st\u00e1tusza",
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "Application_Filter": {
+            "description": "\u00c1ltal\u00e1nos sz\u0171r\u0151",
+            "properties": {
+                "ids": {
+                    "description": "Megadott azonos\u00edt\u00f3j\u00fa elemek sz\u0171r\u00e9se",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        7,
+                        8,
+                        9
+                    ]
+                },
+                "status": {
+                    "description": "A rekord st\u00e1tusza",
+                    "type": "integer",
+                    "example": 1
+                },
+                "skip": {
+                    "description": "A lista elej\u00e9r\u0151l kihagyott elemek sz\u00e1ma (lapoz\u00f3 offset)",
+                    "type": "integer",
+                    "example": "30"
+                },
+                "limit": {
+                    "description": "A lista maxim\u00e1lis elemsz\u00e1ma (lapoz\u00f3 m\u00e9ret)",
+                    "type": "integer",
+                    "example": 10
+                },
+                "currentLanguage": {
+                    "description": "Aktu\u00e1lis nyelv (t\u00f6bbnyelv\u0171 adatok eset\u00e9n)",
+                    "type": "string",
+                    "example": "hu"
+                }
+            }
+        }
+    }
+}
