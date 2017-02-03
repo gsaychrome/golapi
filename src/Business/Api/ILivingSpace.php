@@ -8,7 +8,7 @@ namespace Clab2\Golapi\Business\Api;
  * @property int $height Az élettér magassága
  * @property int[][] $cells Az élettér állapottere
  */
-interface ILivingSpace extends IData
+interface ILivingSpace
 {
     /**
      * Üres cellák jelölése

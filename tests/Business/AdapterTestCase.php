@@ -16,9 +16,9 @@ class AdapterTestCase extends TestCase
      */
     public function testAdapters()
     {
-        $this->assertNotNull($this->toolkit->business->livingSpaceAdapter);
+        $this->assertNotNull($this->toolkit->business->golapiLivingSpaceAdapter);
         $this->assertInstanceOf('\\Clab2\\Golapi\\Business\\Api\\ILivingSpaceAdapter',
-            $this->toolkit->business->livingSpaceAdapter);
+            $this->toolkit->business->golapiLivingSpaceAdapter);
     }
 
     /**
@@ -26,7 +26,7 @@ class AdapterTestCase extends TestCase
      */
     public function testObjects()
     {
-        $livingSpace = $this->toolkit->business->livingSpaceAdapter->create(200,100);
+        $livingSpace = $this->toolkit->business->golapiLivingSpaceAdapter->createSpace(200,100);
         $this->assertNotNull($livingSpace);
         $this->assertInstanceOf('\\Clab2\\Golapi\\Business\\Api\\ILivingSpace',$livingSpace);
     }

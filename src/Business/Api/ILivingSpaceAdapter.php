@@ -13,5 +13,5 @@ interface ILivingSpaceAdapter
      * @param int $height Az élettér magassága
      * @return ILivingSpace
      */
-    public function create($width, $height);
+    public function createSpace($width=100, $height=100);
 }

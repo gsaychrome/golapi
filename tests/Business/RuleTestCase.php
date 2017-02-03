@@ -16,9 +16,9 @@ class RuleTestCase extends TestCase
      */
     public function testAdapters()
     {
-		$this->assertNotNull($this->toolkit->business->gameControllerAdapter);
+		$this->assertNotNull($this->toolkit->business->golapiGameControllerAdapter);
 		$this->assertInstanceOf('\\Clab2\\Golapi\\Business\\Api\\IGameControllerAdapter',
-			$this->toolkit->business->gameControllerAdapter);
+			$this->toolkit->business->golapiGameControllerAdapter);
     }
 
 }

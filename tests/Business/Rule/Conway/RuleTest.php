@@ -10,8 +10,8 @@ Class RuleTest extends RuleTestCase
     protected $config = [
         'golapi' => [
             'business' => [
-                'Rule' => [
-                    'adapterType' => 'Coneway'
+                'GameController' => [
+                    'adapterType' => 'Rule\\Conway'
                 ]
             ]
         ]
