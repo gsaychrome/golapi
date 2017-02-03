@@ -23,4 +23,5 @@ class LivingSpaceAdapter extends \Clab2\Application\Business\Odm\Doctrine\Adapte
         $space->step = 0;
         return $space;
     }
+
 }

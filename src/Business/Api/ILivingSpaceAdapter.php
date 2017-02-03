@@ -14,4 +14,13 @@ interface ILivingSpaceAdapter
      * @return ILivingSpace
      */
     public function createSpace($width=100, $height=100);
+
+    /**
+     * Beolvas egy ILivingSpace objektumot a kapott asszociatív tömb adataiból
+     * @param array $inputs
+     * @param ILivingSpace $data
+     * @return ILivingSpace
+     */
+    public function fetch($inputs, $data = null);
+
 }
