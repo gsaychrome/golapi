@@ -5,7 +5,7 @@ namespace Clab2\Golapi\Business\Api;
 /**
  * A játék vezérlése
  */
-interface IGameController
+interface IGameControllerAdapter
 {
     /**
      * Kiszámmítja az élettér új állapotát

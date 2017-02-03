@@ -2,14 +2,11 @@
 <phpunit bootstrap="vendor/autoload.php">
 
     <testsuites>
-        <testsuite name="The Toolkit function's test suite in Golapi module">
-            <file>tests/ToolkitTest.php</file>
+        <testsuite name="Golapi adapter tesztek">
+            <file>tests/Business/Odm/Doctrine/AdapterTest.php</file>
         </testsuite>
-        <testsuite name="The Business Logic's test suite in Golapi module with Conway's rules">
+        <testsuite name="Conway szabály teszt">
             <directory>tests/Business/Rule/Conway</directory>
-        </testsuite>
-        <testsuite name="The REST API test suite in Golapi module">
-            <directory>tests/Rest/Controller</directory>
         </testsuite>
     </testsuites>
 
