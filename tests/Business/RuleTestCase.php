@@ -28,13 +28,15 @@ class RuleTestCase extends TestCase
     {
         $w = 10;
         $h = 10;
-        $a = $this->toolkit->business->golapiLivingSpaceAdapter;
         $space = $this->toolkit->business->golapiLivingSpaceAdapter->createSpace($w, $h);
+        $this->assertNotNull($space);
+        $this->assertEquals(0,$space->step);
         $space = $this->toolkit->business->golapiGameControllerAdapter->next($space);
         // A visszatérési érték egy élettér implementáció
         $this->assertNotNull($space);
         $this->assertInstanceOf('\\Clab2\\Golapi\\Business\\Api\\ILivingSpace',$space);
         // Aminek a méretei megegyeznek a bemenő élettérrel
+        $this->assertEquals(1,$space->step);
         $this->assertEquals($w,$space->width);
         $this->assertEquals($h,$space->height);
         // A cellákban megtaláljuk a megfelelő dimenziójú tömböt
