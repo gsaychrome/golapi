@@ -20,6 +20,7 @@ class LivingSpaceAdapter extends \Clab2\Application\Business\Odm\Doctrine\Adapte
         $space = new LivingSpace($this);
         $space->width = $width;
         $space->height = $height;
+        $space->step = 0;
         return $space;
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Clab2\Golapi\Business\Traits;
 
-use Clab2\Application\Business\Api\IData;
-
 /**
  * @SWG\Definition(definition="Golapi_LivingSpace",title="Golapi_LivingSpace",
  *  allOf={
@@ -15,7 +13,15 @@ use Clab2\Application\Business\Api\IData;
  */
 trait LivingSpaceTrait
 {
-    private static $properties = ['width', 'height', 'cells'];
+    private static $properties = ['step', 'width', 'height', 'cells'];
+
+    /**
+     * @var int Az iterációk száma, amin az élettér már átesett
+     * @Field(type="int")
+     * @Column(type="integer")
+     * @SWG\Property(example=10)
+     */
+    protected $step;
 
     /**
      * @var int Az élettér szélessége

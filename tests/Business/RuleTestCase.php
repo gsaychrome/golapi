@@ -21,4 +21,28 @@ class RuleTestCase extends TestCase
 			$this->toolkit->business->golapiGameControllerAdapter);
     }
 
+    /**
+     * Ellenörizzük, hogy a szabályrendszer rendben lefut-e, és a visszakapott élettér megfelel-e az elvárásoknak
+     */
+    public function testNextGeneration()
+    {
+        $w = 10;
+        $h = 10;
+        $a = $this->toolkit->business->golapiLivingSpaceAdapter;
+        $space = $this->toolkit->business->golapiLivingSpaceAdapter->createSpace($w, $h);
+        $space = $this->toolkit->business->golapiGameControllerAdapter->next($space);
+        // A visszatérési érték egy élettér implementáció
+        $this->assertNotNull($space);
+        $this->assertInstanceOf('\\Clab2\\Golapi\\Business\\Api\\ILivingSpace',$space);
+        // Aminek a méretei megegyeznek a bemenő élettérrel
+        $this->assertEquals($w,$space->width);
+        $this->assertEquals($h,$space->height);
+        // A cellákban megtaláljuk a megfelelő dimenziójú tömböt
+        $this->assertNotNull($space->cells);
+        $this->assertCount($h,$space->cells);
+        foreach($space->cells as $row) {
+            $this->assertCount($w,$row);
+        }
+        // A cellaváltozásokat a konkrét implementációban ellenőrizzük, mert az függhet az élettér szabályaitól
+    }
 }

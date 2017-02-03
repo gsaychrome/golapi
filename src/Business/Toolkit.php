@@ -6,8 +6,8 @@ use Clab2\Golapi\Business\Api\ILivingSpaceAdapter;
 
 /**
  * Class Toolkit
- * @property IGameControllerAdapter $gameControllerAdapter
- * @property ILivingSpaceAdapter $livingSpaceAdapter
+ * @property IGameControllerAdapter $golapiGameControllerAdapter
+ * @property ILivingSpaceAdapter $golapiLivingSpaceAdapter
  */
 class Toolkit extends \Clab2\Application\Business\Toolkit
 {

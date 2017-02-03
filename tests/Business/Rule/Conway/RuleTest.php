@@ -8,6 +8,12 @@ use Clab2\Golapi\Tests\Business\RuleTestCase;
 Class RuleTest extends RuleTestCase
 {
     protected $config = [
+        // Tetszőleges adatbázismodellel tesztelhető
+        'mongo' => [
+            'host' => 'localhost',
+            'port' => 27017,
+            'database' => 'clab2_golapi_doctrine'
+        ],
         'golapi' => [
             'business' => [
                 'GameController' => [
