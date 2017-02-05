@@ -1,5 +1,6 @@
 <?php
 namespace Clab2\Golapi\Rest\Controller\Phalcon;
+
 use Clab2\Application\Rest\Controller\Phalcon\PortalService;
 use Clab2\Golapi\Business\Toolkit;
 use Clab2\Golapi\Rest\Api\IGameService;
@@ -44,17 +45,25 @@ class GameService extends PortalService implements IGameService
 
     public function nextAction()
     {
-        $request = $this->getJsonRawBody(true);
-        $space = $this->getToolkit()->golapiLivingSpaceAdapter->fetch($request);
-        $space = $this->getToolkit()->golapiGameControllerAdapter->next($space);
-        return $this->responseOk($this->toRest($space));
+        try {
+            $request = $this->getJsonRawBody(true);
+            $space = $this->getToolkit()->golapiLivingSpaceAdapter->fetch($request);
+            $space = $this->getToolkit()->golapiGameControllerAdapter->next($space);
+            return $this->responseOk($this->toRest($space));
+        } catch (\Exception $e) {
+            return $this->responseException($e);
+        }
     }
 
     public function initAction()
     {
-        $space = $this->getToolkit()->golapiLivingSpaceAdapter->createSpace(45,45);
-        $space = $this->getToolkit()->golapiGameControllerAdapter->next($space);
-        return $this->responseOk($this->toRest($space));
+        try {
+            $space = $this->getToolkit()->golapiLivingSpaceAdapter->createSpace(45, 45);
+            $space = $this->getToolkit()->golapiGameControllerAdapter->next($space);
+            return $this->responseOk($this->toRest($space));
+        } catch (\Exception $e) {
+            return $this->responseException($e);
+        }
     }
 
 

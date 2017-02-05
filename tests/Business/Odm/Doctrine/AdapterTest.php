@@ -12,7 +12,7 @@ Class AdapterTest extends AdapterTestCase
                 'mongo' => [
                     'host' => 'localhost',
                     'port' => 27017,
-                    'database' => 'clab2_golapi_doctrine_test'
+                    'database' => 'clab2_golapi_doctrine'
                 ],
     ];
 

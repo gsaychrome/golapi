@@ -29,3 +29,15 @@ use Swagger\Annotations as SWG;
  * 			@SWG\Property(property="height", type="integer", description="Az élettér magassága", example="80")
  * 		)
  */
+
+/**
+ * 		@SWG\Definition(
+ * 			definition="Golapi_RestListLivingSpace",
+ *          type="object",
+ *          title="Golapi_RestListLivingSpace",
+ *          description="Egy élettér kivonatos adatai a listázás számára",
+ * 			@SWG\Property(property="id", type="integer", description="Az élettér azonosítója", example=1),
+ * 			@SWG\Property(property="name", type="string", description="A minta neve", example="Próba 1"),
+ * 			@SWG\Property(property="savedOn", type="integer", description="A mentés időpontja (UNIX timestamp)", example=12345678)
+ * 		)
+ */
