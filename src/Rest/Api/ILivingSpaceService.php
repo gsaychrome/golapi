@@ -58,7 +58,7 @@ interface ILivingSpaceService
      *          description="Az életterek listájának kivonatos adatai",
      *          @SWG\Schema(
      *              type="array",
-     *              @SWG\Items(type="ref="#/definitions/Golapi_RestListLivingSpace")
+     *              @SWG\Items(ref="#/definitions/Golapi_RestListLivingSpace")
      *          )
      *     ),
      * )

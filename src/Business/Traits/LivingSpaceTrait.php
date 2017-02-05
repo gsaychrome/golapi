@@ -19,6 +19,7 @@ trait LivingSpaceTrait
     /**
      * @var int A mentett élettér azonosítója
      * @Id(name="id",strategy="INCREMENT")
+     * @SWG\Property(example=1)
      */
     protected $id;
 
@@ -26,7 +27,7 @@ trait LivingSpaceTrait
      * @var string A mentett élettér neve
      * @Field(type="string")
      * @Column(type="string")
-     * @SWG\Property(example='Ez egy név')
+     * @SWG\Property(example="Ez egy név")
      */
     protected $name;
 
@@ -34,7 +35,7 @@ trait LivingSpaceTrait
      * @var string A mentett élettér leírása
      * @Field(type="string")
      * @Column(type="string")
-     * @SWG\Property(example='Ez egy leírás')
+     * @SWG\Property(example="Ez egy leírás")
      */
     protected $description;
 

@@ -106,12 +106,105 @@
                 "x-methodName": "samples",
                 "x-group": "Golapi_LivingSpace"
             }
+        },
+        "/golapi/space/saved": {
+            "get": {
+                "tags": [
+                    "space"
+                ],
+                "summary": "Az elmentett \u00e9letterek list\u00e1ja",
+                "responses": {
+                    "200": {
+                        "description": "Az \u00e9letterek list\u00e1j\u00e1nak kivonatos adatai",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Golapi_RestListLivingSpace"
+                            }
+                        }
+                    }
+                },
+                "x-methodName": "saved",
+                "x-group": "Golapi_LivingSpace"
+            }
+        },
+        "/golapi/space/get/{id}": {
+            "get": {
+                "tags": [
+                    "space"
+                ],
+                "summary": "Az elmentett \u00e9lett\u00e9r adatai",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Az \u00e9lett\u00e9r azonos\u00edt\u00f3ja",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Az \u00e9lett\u00e9r adatai",
+                        "schema": {
+                            "$ref": "#/definitions/Golapi_LivingSpace"
+                        }
+                    }
+                },
+                "x-methodName": "get",
+                "x-group": "Golapi_LivingSpace"
+            }
+        },
+        "/golapi/space/save": {
+            "post": {
+                "tags": [
+                    "space"
+                ],
+                "summary": "Egy \u00e9lett\u00e9r elment\u00e9se",
+                "parameters": [
+                    {
+                        "name": "space",
+                        "in": "body",
+                        "description": "A bet\u00f6lt\u00e9s param\u00e9terei",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Golapi_LivingSpace"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A j\u00e1t\u00e9k \u00faj adatai",
+                        "schema": {
+                            "$ref": "#/definitions/Golapi_LivingSpace"
+                        }
+                    }
+                },
+                "x-methodName": "save",
+                "x-group": "Golapi_LivingSpace"
+            }
         }
     },
     "definitions": {
         "Golapi_LivingSpace": {
             "title": "Golapi_LivingSpace",
             "properties": {
+                "id": {
+                    "description": "A mentett \u00e9lett\u00e9r azonos\u00edt\u00f3ja",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "A mentett \u00e9lett\u00e9r neve",
+                    "type": "string",
+                    "example": "Ez egy n\u00e9v"
+                },
+                "description": {
+                    "description": "A mentett \u00e9lett\u00e9r le\u00edr\u00e1sa",
+                    "type": "string",
+                    "example": "Ez egy le\u00edr\u00e1s"
+                },
                 "step": {
                     "description": "Az iter\u00e1ci\u00f3k sz\u00e1ma, amin az \u00e9lett\u00e9r m\u00e1r \u00e1tesett",
                     "type": "integer",
@@ -172,6 +265,28 @@
                     "description": "Az \u00e9lett\u00e9r magass\u00e1ga",
                     "type": "integer",
                     "example": "80"
+                }
+            },
+            "type": "object"
+        },
+        "Golapi_RestListLivingSpace": {
+            "title": "Golapi_RestListLivingSpace",
+            "description": "Egy \u00e9lett\u00e9r kivonatos adatai a list\u00e1z\u00e1s sz\u00e1m\u00e1ra",
+            "properties": {
+                "id": {
+                    "description": "Az \u00e9lett\u00e9r azonos\u00edt\u00f3ja",
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "description": "A minta neve",
+                    "type": "string",
+                    "example": "Pr\u00f3ba 1"
+                },
+                "savedOn": {
+                    "description": "A ment\u00e9s id\u0151pontja (UNIX timestamp)",
+                    "type": "integer",
+                    "example": 12345678
                 }
             },
             "type": "object"

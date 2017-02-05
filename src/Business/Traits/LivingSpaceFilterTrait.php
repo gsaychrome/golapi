@@ -11,7 +11,6 @@ trait LivingSpaceFilterTrait
 
     /**
      * @var int
-     * @SWG\Property
      */
     protected $id;
 
