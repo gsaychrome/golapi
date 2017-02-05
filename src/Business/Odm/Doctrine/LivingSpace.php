@@ -13,7 +13,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations\Field;
 use Doctrine\ODM\MongoDB\Mapping\Annotations\Id;
 
 /**
- * @Document(collection="clab_golapi__living_space")
+ * @Document(collection="clab_golapi__livingspace")
  */
 class LivingSpace extends Data implements ILivingSpace
 {
