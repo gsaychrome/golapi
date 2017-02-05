@@ -77,6 +77,7 @@ class AdapterTestCase extends TestCase
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         ];
         $livingSpace = $this->toolkit->business->golapiLivingSpaceAdapter->createSpace(15,9);
+        $space = $this->toolkit->business->golapiLivingSpaceAdapter->parse($data, $livingSpace);
         $this->assertEquals(15,$space->width);
         $this->assertEquals(9,$space->height);
         $this->assertEquals($cells,$space->cells);
