@@ -15,7 +15,7 @@ class LivingSpaceService extends PortalService implements ILivingSpaceService
     public function __construct($server, $config)
     {
         parent::__construct($server, $config);
-        $this->map['post']["/{$this->getUrlBase()}/next"] = "load";
+        $this->map['post']["/{$this->getUrlBase()}/load"] = "load";
         $this->map['get']["/{$this->getUrlBase()}/samples"] = "samples";
     }
 
@@ -51,7 +51,8 @@ class LivingSpaceService extends PortalService implements ILivingSpaceService
         $width = (int)$request['width'];
         $height = (int)$request['height'];
         $data = file_get_contents(dirname(dirname(dirname(dirname(__DIR__)))).'/data/'.$name);
-        $space = $this->getToolkit()->golapiLivingSpaceAdapter->parse($data,$width,$height);
+        $space = $this->getToolkit()->golapiLivingSpaceAdapter->createSpace($width,$height);
+        $space = $this->getToolkit()->golapiLivingSpaceAdapter->parse($data,$space);
         return $this->responseOk($this->toRest($space));
     }
 

@@ -52,19 +52,8 @@ class GameService extends PortalService implements IGameService
 
     public function initAction()
     {
-        $space = $this->getToolkit()->golapiLivingSpaceAdapter->createSpace(10,10);
-        $space->cells = [
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,1,1,0,0,0,0,0,0],
-            [0,0,1,1,0,0,0,0,0,0],
-            [0,0,0,0,1,1,0,0,0,0],
-            [0,0,0,0,1,1,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0]
-        ];
+        $space = $this->getToolkit()->golapiLivingSpaceAdapter->createSpace(45,45);
+        $space = $this->getToolkit()->golapiGameControllerAdapter->next($space);
         return $this->responseOk($this->toRest($space));
     }
 
