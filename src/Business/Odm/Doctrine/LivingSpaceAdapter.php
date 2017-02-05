@@ -118,6 +118,7 @@ class LivingSpaceAdapter extends \Clab2\Application\Business\Odm\Doctrine\Adapte
             }
         }
 
+        // Eltoljuk a mintát középről a megadott offsettel
         $minwidth = ceil($minwidth/2) + abs($xoffset);
         $minheight = ceil($minheight/2) + abs($yoffset);
         if($space->width<$minwidth) {
@@ -129,6 +130,7 @@ class LivingSpaceAdapter extends \Clab2\Application\Business\Odm\Doctrine\Adapte
         }
         $yo = floor($space->height /  2) + $yoffset;
 
+        // Belemásoljuk a mintát az élettérbe
         $scells = [];
         for($i=0;$i<$space->height;$i++) {
             $scells[$i] = array_fill(0,$space->width,0);
@@ -139,11 +141,9 @@ class LivingSpaceAdapter extends \Clab2\Application\Business\Odm\Doctrine\Adapte
                 }
             }
         }
-
         $space->cells = $scells;
 
         return $space;
     }
-
 
 }

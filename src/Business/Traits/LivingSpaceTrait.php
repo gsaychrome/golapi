@@ -14,13 +14,29 @@ namespace Clab2\Golapi\Business\Traits;
  */
 trait LivingSpaceTrait
 {
-    private static $properties = ['step', 'width', 'height', 'cells'];
+    private static $properties = ['id','step', 'width', 'height', 'cells', 'name', 'description'];
 
     /**
      * @var int A mentett élettér azonosítója
-     * @Id
+     * @Id(name="id",strategy="INCREMENT")
      */
     protected $id;
+
+    /**
+     * @var string A mentett élettér neve
+     * @Field(type="string")
+     * @Column(type="string")
+     * @SWG\Property(example='Ez egy név')
+     */
+    protected $name;
+
+    /**
+     * @var string A mentett élettér leírása
+     * @Field(type="string")
+     * @Column(type="string")
+     * @SWG\Property(example='Ez egy leírás')
+     */
+    protected $description;
 
     /**
      * @var int Az iterációk száma, amin az élettér már átesett

@@ -1,11 +1,12 @@
 <?php
 
 namespace Clab2\Golapi\Business\Api;
+use Clab2\Application\Business\Api\IAdapter;
 
 /**
  * Az élettér adapter interface
  */
-interface ILivingSpaceAdapter
+interface ILivingSpaceAdapter extends IAdapter
 {
     /**
      * Létrehoz egy üres életteret

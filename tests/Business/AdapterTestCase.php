@@ -82,4 +82,28 @@ class AdapterTestCase extends TestCase
         $this->assertEquals(9,$space->height);
         $this->assertEquals($cells,$space->cells);
     }
+
+    public function testSaveAndGet() {
+        $adapter = $this->toolkit->business->golapiLivingSpaceAdapter;
+        $adapter->reset();
+
+        $space = $adapter->createSpace(10,10);
+        $space->name = 'test';
+        $space->cells = $cells = [
+            [0,1,0,0,0,0,0],
+            [0,0,0,1,0,0,0],
+            [1,1,0,0,1,1,1]
+        ];
+        $id = $adapter->save($space);
+        $adapter->clearCache();
+
+        $space2 = $adapter->get($id);
+        $this->assertEquals($space->id, $space2->id);
+        $this->assertEquals($space->width, $space2->width);
+        $this->assertEquals($space->height, $space2->height);
+        $this->assertEquals($space->step, $space2->step);
+        $this->assertEquals($space->cells, $space2->cells);
+        $this->assertEquals($space->name, $space2->name);
+    }
+
 }
