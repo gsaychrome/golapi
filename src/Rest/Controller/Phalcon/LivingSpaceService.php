@@ -16,6 +16,7 @@ class LivingSpaceService extends PortalService implements ILivingSpaceService
     {
         parent::__construct($server, $config);
         $this->map['post']["/{$this->getUrlBase()}/load"] = "load";
+        $this->map['post']["/{$this->getUrlBase()}/save"] = "save";
         $this->map['get']["/{$this->getUrlBase()}/samples"] = "samples";
         $this->map['get']["/{$this->getUrlBase()}/saved"] = "saved";
         $this->map['get']["/{$this->getUrlBase()}/get/{id}"] = "get";
