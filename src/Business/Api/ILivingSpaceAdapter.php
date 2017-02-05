@@ -23,4 +23,13 @@ interface ILivingSpaceAdapter
      */
     public function fetch($inputs, $data = null);
 
+    /**
+     * Lif adatformátum parsolása. Ha csak üres adatokat kap egy olyan élettérrel tér vissza, amibe pontosan belefér
+     * a minta. Ha a második paraméterben kap egy életteret, akkor annak a közepére helyezi a mintát.
+     * @param string $lif A lif file tartalma
+     * @param ILivingSpace $data
+     * @return ILivingSpace
+     */
+    public function parse($lif, $space=null);
+
 }

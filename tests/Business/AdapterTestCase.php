@@ -31,6 +31,9 @@ class AdapterTestCase extends TestCase
         $this->assertInstanceOf('\\Clab2\\Golapi\\Business\\Api\\ILivingSpace',$livingSpace);
     }
 
+    /**
+     * Az élettér inicializálásának tesztelése
+     */
     public function testCellInit() {
         $livingSpace = $this->toolkit->business->golapiLivingSpaceAdapter->createSpace(200,100);
         // Ha üresen hozzuk létre, akkor az iterációk számát 0-ra állítjuk
@@ -42,5 +45,40 @@ class AdapterTestCase extends TestCase
         ];
         // Ha értéket adunk a celláknak, akkor automatikusan az 1-es lépésre kerülünk
         $this->assertEquals(1,$livingSpace->step);
+    }
+
+    /**
+     * Lif fileok beolvasásának tesztelése
+     */
+    public function testLifParser() {
+        $file = dirname(dirname(__DIR__)).'/data/ACORN.LIF';
+        $data = file_get_contents($file);
+        $space = $this->toolkit->business->golapiLivingSpaceAdapter->parse($data);
+        $cells = [
+            [0,1,0,0,0,0,0],
+            [0,0,0,1,0,0,0],
+            [1,1,0,0,1,1,1]
+        ];
+        $this->assertNotNull($space);
+        $this->assertInstanceOf('\\Clab2\\Golapi\\Business\\Api\\ILivingSpace',$space);
+        $this->assertEquals(7,$space->width);
+        $this->assertEquals(3,$space->height);
+        $this->assertEquals($cells,$space->cells);
+
+        $cells = [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
+            [0,0,0,0,1,1,0,0,1,1,1,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        ];
+        $livingSpace = $this->toolkit->business->golapiLivingSpaceAdapter->createSpace(15,9);
+        $this->assertEquals(15,$space->width);
+        $this->assertEquals(9,$space->height);
+        $this->assertEquals($cells,$space->cells);
     }
 }

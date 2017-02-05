@@ -32,4 +32,15 @@ class LivingSpaceAdapter extends \Clab2\Application\Business\Odm\Doctrine\Adapte
         return $space;
     }
 
+    /**
+     * @param string $lif
+     * @param ILivingSpace $space
+     * @return ILivingSpace
+     */
+    public function parse($lif, $space = null)
+    {
+        // TODO: Implement parse() method.
+    }
+
+
 }
