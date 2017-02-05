@@ -56,6 +56,56 @@
                 "x-methodName": "init",
                 "x-group": "Golapi_Game"
             }
+        },
+        "/golapi/space/load": {
+            "post": {
+                "tags": [
+                    "space"
+                ],
+                "summary": "Egy p\u00e9lda minta bet\u00f6lt\u00e9se",
+                "parameters": [
+                    {
+                        "name": "space",
+                        "in": "body",
+                        "description": "A bet\u00f6lt\u00e9s param\u00e9terei",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Golapi_LoadingData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A j\u00e1t\u00e9k \u00faj adatai",
+                        "schema": {
+                            "$ref": "#/definitions/Golapi_LivingSpace"
+                        }
+                    }
+                },
+                "x-methodName": "load",
+                "x-group": "Golapi_LivingSpace"
+            }
+        },
+        "/golapi/space/samples": {
+            "get": {
+                "tags": [
+                    "space"
+                ],
+                "summary": "Az el\u00e9rhet\u0151 minta p\u00e9ld\u00e1k nevei",
+                "responses": {
+                    "200": {
+                        "description": "A p\u00e9lda mint\u00e1k nevei",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-methodName": "samples",
+                "x-group": "Golapi_LivingSpace"
+            }
         }
     },
     "definitions": {
@@ -103,6 +153,28 @@
                     "$ref": "#/definitions/Application_Data"
                 }
             ]
+        },
+        "Golapi_LoadingData": {
+            "title": "Golapi_LoadingData",
+            "description": "A bet\u00f6lt\u00e9s param\u00e9terei",
+            "properties": {
+                "name": {
+                    "description": "A minta neve",
+                    "type": "string",
+                    "example": "ACORN.LIF"
+                },
+                "width": {
+                    "description": "Az \u00e9lett\u00e9r sz\u00e9less\u00e9ge",
+                    "type": "integer",
+                    "example": "120"
+                },
+                "height": {
+                    "description": "Az \u00e9lett\u00e9r magass\u00e1ga",
+                    "type": "integer",
+                    "example": "80"
+                }
+            },
+            "type": "object"
         },
         "Request_Errors": {
             "description": "A lek\u00e9rdez\u00e9s sor\u00e1n t\u00f6rt\u00e9nt valid\u00e1ci\u00f3s vagy feldolgoz\u00e1si hib\u00e1k adatai",

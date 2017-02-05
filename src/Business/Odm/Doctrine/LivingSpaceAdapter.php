@@ -142,7 +142,6 @@ class LivingSpaceAdapter extends \Clab2\Application\Business\Odm\Doctrine\Adapte
 
         $space->cells = $scells;
 
-
         return $space;
     }
 
